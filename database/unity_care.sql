@@ -1,6 +1,6 @@
 -- Create the Database
-CREATE DATABASE IF NOT EXISTS unity_care_clinic;
-USE unity_care_clinic;
+CREATE DATABASE IF NOT EXISTS UnityClinic_V2;
+USE UnityClinic_V2;
 -- ---------------------------------------------------------
 -- 1. INDEPENDENT MODULES (Must be created first)
 -- ---------------------------------------------------------
