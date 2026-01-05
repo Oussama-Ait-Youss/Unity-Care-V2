@@ -1,19 +1,15 @@
 <?php
 // FIX 1: Include the correct parent class file
-require_once __DIR__ . "/../core/BaseModel.php";
+// require_once __DIR__ . "/../Core/BaseModel.php";
+require_once __DIR__ . "/../Core/BaseModel.php"; // Make sure path matches Folder Case
 
+// Add 'extends BaseModel'
 abstract class User extends BaseModel {
-    protected $id;
-    protected $username;
-    protected $password;
-    protected $email;
-    protected $role;
-    // Properties for relations
-    protected $patient_id;
-    protected $doctor_id;
-    protected $created_at;
+    // ... keep your properties ...
 
     public function __construct($id, $username, $password, $email, $role = null) {
+        // If BaseModel had a constructor, we would call parent::__construct();
+        // But for now, we just set the variables.
         $this->id = $id;
         $this->username = $username;
         $this->password = $password;

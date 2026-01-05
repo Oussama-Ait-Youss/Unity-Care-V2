@@ -1,5 +1,11 @@
 <?php
+require_once __DIR__ . '/BaseRepository.php';
 
+// Also make sure to point to the correct location for models
+require_once __DIR__ . '/../Models/User.php';
+require_once __DIR__ . '/../Models/Admin.php';
+require_once __DIR__ . '/../Models/Doctor.php';
+require_once __DIR__ . '/../Models/Patient.php';
 class UserRepository extends BaseRepository
 {
     protected string $table = 'users';

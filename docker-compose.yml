@@ -8,21 +8,29 @@ services:
     volumes:
       - ./:/var/www/html
     depends_on:
-      - db
+      db:
+        condition: service_healthy
 
   db:
-    image: mysql:5.7
+    image: mariadb:10.6
+    restart: always
     ports:
-      - "3306:3306"
+      - "3307:3306"
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: UnityClinic_V2
     volumes:
-      # 1. Load your SQL file automatically on the FIRST start
       - ./database/unity_care.sql:/docker-entrypoint-initdb.d/init.sql
+    # Healthcheck ensures DB is truly ready before others connect
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
+    restart: always
     ports:
       - "8080:80"
     environment:
@@ -30,4 +38,5 @@ services:
       PMA_USER: root
       PMA_PASSWORD: root
     depends_on:
-      - db
+      db:
+        condition: service_healthy

@@ -1,9 +1,8 @@
 -- Create the Database
 CREATE DATABASE IF NOT EXISTS UnityClinic_V2;
 USE UnityClinic_V2;
--- ---------------------------------------------------------
+
 -- 1. INDEPENDENT MODULES (Must be created first)
--- ---------------------------------------------------------
 
 -- Departments Table
 CREATE TABLE departments (
@@ -33,9 +32,7 @@ CREATE TABLE medications (
     stock_quantity INT DEFAULT 0
 );
 
--- ---------------------------------------------------------
 -- 2. USER MANAGEMENT (Depends on Profiles)
--- ---------------------------------------------------------
 
 CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -51,9 +48,7 @@ CREATE TABLE users (
     FOREIGN KEY (doctor_id) REFERENCES doctors(id) ON DELETE SET NULL
 );
 
--- ---------------------------------------------------------
 -- 3. CLINIC OPERATIONS (Appointments)
--- ---------------------------------------------------------
 
 CREATE TABLE appointments (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -67,9 +62,7 @@ CREATE TABLE appointments (
     FOREIGN KEY (doctor_id) REFERENCES doctors(id) ON DELETE CASCADE
 );
 
--- ---------------------------------------------------------
 -- 4. PHARMACY & RECORDS (Prescriptions)
--- ---------------------------------------------------------
 
 CREATE TABLE prescriptions (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -90,3 +83,11 @@ CREATE TABLE prescription_items (
     FOREIGN KEY (prescription_id) REFERENCES prescriptions(id) ON DELETE CASCADE,
     FOREIGN KEY (medication_id) REFERENCES medications(id) ON DELETE CASCADE
 );
+
+
+-- data
+-- The hash below is for 'password123'
+INSERT INTO users (username, email, password_hash, role) VALUES
+('SuperAdmin', 'admin@test.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'admin'),
+('DrHouse', 'doctor@test.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'doctor'),
+('JohnDoe', 'patient@test.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'patient');

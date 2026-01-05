@@ -7,6 +7,8 @@ class Admin extends User {
         parent::__construct($id, $username, $password, $email, 'admin');
     }
 
+
+
     public function getRole(): string {
         return 'admin';
     }
