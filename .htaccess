@@ -1,0 +1,7 @@
+RewriteEngine On
+
+# 1. Set the base to the current directory
+RewriteBase /
+
+# 2. Redirect the empty root request to the dashboard folder
+RewriteRule ^$ ./public/index.php [L,R=301]

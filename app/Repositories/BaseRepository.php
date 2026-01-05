@@ -1,13 +1,17 @@
 <?php
+// 1. AJOUT : On inclut la classe Database pour pouvoir l'utiliser
+require_once __DIR__ . '/../Config/Database.php';
 
 abstract class BaseRepository
 {
     protected PDO $pdo;
     protected string $table;
 
-    public function __construct(PDO $pdo)
+    // 2. CHANGEMENT : On retire "PDO $pdo" des parenthèses
+    public function __construct()
     {
-        $this->pdo = $pdo;
+        // 3. CHANGEMENT : On récupère la connexion via le Singleton
+        $this->pdo = Database::getInstance()->getConnection();
     }
 
     public function findById(int $id): ?array
