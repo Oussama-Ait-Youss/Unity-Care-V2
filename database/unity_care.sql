@@ -86,8 +86,4 @@ CREATE TABLE prescription_items (
 
 
 -- data
--- The hash below is for 'password123'
-INSERT INTO users (username, email, password_hash, role) VALUES
-('SuperAdmin', 'admin@test.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'admin'),
-('DrHouse', 'doctor@test.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'doctor'),
-('JohnDoe', 'patient@test.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'patient');
+insert into users (username,password,email,role) values ('oussama','$2y$10$iBpiejl7NlCXnlC8xSzCzuIBIsHT7lbZqtsaSL7P1.wmsMWNgWQz6','oussama@gmail.com','admin');
