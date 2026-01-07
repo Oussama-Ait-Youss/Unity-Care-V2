@@ -49,6 +49,10 @@ switch ($action) {
         break;
 
     default:
-        echo "404 - Page Not Found";
+        // 1. On signale au navigateur que c'est une erreur 404 (Bon pour le SEO)
+        http_response_code(404);
+        
+        // 2. On charge la belle page que nous venons de créer
+        require __DIR__ . '/../app/Views/404.php';
         break;
 }
